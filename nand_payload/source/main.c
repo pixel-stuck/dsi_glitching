@@ -28,8 +28,8 @@ void exploit_main(void) {
   /* Clear eMMC port struct */
   memset((void*)0x3FFE6E4,0,68);
 
-	/* Stop DMA used for eMMC transfer */
-	stopDmaChannelExt(5);
+  /* Stop DMA used for eMMC transfer */
+  stopDmaChannelExt(5);
   
   /* Reset controller to a fresh state */
   sdmcResetExt();
