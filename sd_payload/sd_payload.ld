@@ -2,16 +2,17 @@ ENTRY(_start)
 
 MEMORY 
 {
-	ram (rwx) : ORIGIN = 0x037ffff4, LENGTH = 0x400C
+	ram (rwx) : ORIGIN = 0x037ffe00, LENGTH = 0x4200
 }
 
 SECTIONS
 {
 	PROVIDE(_start = 0x03800000);
 	.text : {
-		LONG((SIZEOF(.text) - 0xC) + SIZEOF(.rodata) + SIZEOF(.data))
-		LONG(0x200)
+		LONG((SIZEOF(.text) - 0x200) + SIZEOF(.rodata) + SIZEOF(.data))
+		LONG(0x400)
 		LONG(_start)
+		. = ALIGN(0x200);
 		*(.text._start)
 		*(.text*)
 		. = ALIGN(4);
