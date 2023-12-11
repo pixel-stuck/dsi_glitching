@@ -11,8 +11,6 @@ SECTIONS {
 
 	. += 0xFFFF8000 - (ADDR(.boot9) + SIZEOF(.boot9));
 
-
-	__code_start = . ;
 	.text : {
     *(.start)
     *(entry)
@@ -23,38 +21,15 @@ SECTIONS {
     *(.fini)
 	}
 
-	. += 0xFFFF87F4 - (ADDR(.text) + SIZEOF(.text));
-
-	.unkRsaData : {    
-    Unk_Rsa_data.bin.o(.rodata.Unk_Rsa_data_bin)
-	}
-
-	. += 0xFFFF9368 - (ADDR(.unkRsaData) + SIZEOF(.unkRsaData));
+	. += 0xFFFF9368 - (ADDR(.text) + SIZEOF(.text));
 
 	.reset : {
     reset.o(.reset)
 	}    
-
-	. += 0xFFFF9920 - (ADDR(.reset) + SIZEOF(.reset));    
-
-	.keydata : {
-    Unk_Rsa_Key.bin.o(.rodata.Unk_Rsa_Key_bin)
-    NDS_Blowfish.bin.o(.rodata.NDS_Blowfish_bin)
-	}
-
-	. += 0xFFFFBA30 - (ADDR(.keydata) + SIZEOF(.keydata));    
 	    
 	.rodata : {
     main.o(.rodata)
 	}
-
-  __bss_start = . ;
-	.bss : {
-	    main.o(.bss COMMON)
-	}
-	__bss_end = . ;
-	_end = __bss_end ;
-	__end__ = __bss_end ;
 
   /DISCARD/ :
   {
@@ -62,5 +37,5 @@ SECTIONS {
   }
 
     
-    . = ALIGN(4);
+  . = ALIGN(4);
 }

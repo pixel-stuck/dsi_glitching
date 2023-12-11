@@ -8,4 +8,4 @@ The payload used to simulate the flow of the arm7 bootrom in order to progress t
 
 # fakeboot9
 
-Used to simulate the arm9 bootrom flow, in order to debug `sd_payload`. Tested against a dump of the arm7 bootrom first, then against `sd_payload`.
+Used to simulate the arm9 bootrom flow, in order to debug `sd_payload`. Tested against a dump of the arm7 bootrom first, then against `sd_payload` to check for bugs.
